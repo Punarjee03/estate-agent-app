@@ -1,0 +1,146 @@
+[
+    {
+      "id": 1,
+      "type": "house",
+      "price": 450000,
+      "bedrooms": 3,
+      "dateAdded": "2024-11-15",
+      "postcode": "BR1",
+      "location": "Bromley, London",
+      "description": "Beautiful 3-bedroom house in Bromley",
+      "longDescription": "This stunning property features spacious living areas with an open-plan kitchen and dining room. The modern kitchen is fully equipped with integrated appliances. Three generous bedrooms include a master with en-suite bathroom. The property also benefits from a well-maintained garden, off-street parking, and is located close to excellent schools and transport links.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+1",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=House+1+-+Front",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=House+1+-+Living+Room",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=House+1+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=House+1+-+Bedroom",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=House+1+-+Bathroom",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=House+1+-+Garden"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "flat",
+      "price": 275000,
+      "bedrooms": 2,
+      "dateAdded": "2024-12-01",
+      "postcode": "NW1",
+      "location": "Camden, London",
+      "description": "Modern 2-bedroom flat in Camden",
+      "longDescription": "Contemporary apartment situated in the heart of Camden. This stylish flat features an open-plan living and dining area with floor-to-ceiling windows providing abundant natural light. The modern kitchen comes with sleek units and integrated appliances. Two well-proportioned bedrooms and a contemporary bathroom complete this property. Located moments from Camden Town tube station and the vibrant markets.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+2",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=Flat+2+-+Exterior",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=Flat+2+-+Living+Room",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=Flat+2+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=Flat+2+-+Bedroom+1",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=Flat+2+-+Bedroom+2",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=Flat+2+-+Bathroom"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "house",
+      "price": 650000,
+      "bedrooms": 4,
+      "dateAdded": "2024-11-20",
+      "postcode": "SW1",
+      "location": "Westminster, London",
+      "description": "Spacious 4-bedroom house in Westminster",
+      "longDescription": "Impressive family home featuring four double bedrooms, spacious reception rooms, and a contemporary fitted kitchen. The property includes a master bedroom with en-suite, family bathroom, downstairs cloakroom, and a private rear garden. Excellent transport links and close to top-rated schools. Perfect for growing families seeking space and convenience.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+3",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=House+3+-+Front",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=House+3+-+Living+Room",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=House+3+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=House+3+-+Master+Bedroom",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=House+3+-+Bedroom+2",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=House+3+-+Garden",
+        "https://via.placeholder.com/800x600/a8e6cf/ffffff?text=House+3+-+Bathroom"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "flat",
+      "price": 195000,
+      "bedrooms": 1,
+      "dateAdded": "2024-12-10",
+      "postcode": "E1",
+      "location": "Whitechapel, London",
+      "description": "Cozy 1-bedroom flat in Whitechapel",
+      "longDescription": "Perfect starter home or investment property. This compact yet well-designed flat offers an open-plan living area with modern kitchen, a comfortable bedroom with built-in wardrobes, and a contemporary bathroom. Located in a secure building with entry phone system, close to Whitechapel station and the bustling Brick Lane area. Ideal for young professionals.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+4",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=Flat+4+-+Building",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=Flat+4+-+Living+Area",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=Flat+4+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=Flat+4+-+Bedroom",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=Flat+4+-+Bathroom",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=Flat+4+-+Hallway"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "house",
+      "price": 850000,
+      "bedrooms": 5,
+      "dateAdded": "2024-11-25",
+      "postcode": "W1",
+      "location": "Mayfair, London",
+      "description": "Luxurious 5-bedroom house in Mayfair",
+      "longDescription": "Exceptional period property in one of London's most prestigious addresses. This magnificent home boasts five generous bedrooms, three bathrooms, elegant reception rooms with original features, and a state-of-the-art kitchen. Additional features include a private patio garden, wine cellar, and parking. Located moments from Hyde Park and world-class shopping and dining.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+5",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=House+5+-+Exterior",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=House+5+-+Reception+Room",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=House+5+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=House+5+-+Master+Suite",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=House+5+-+Bedroom",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=House+5+-+Bathroom",
+        "https://via.placeholder.com/800x600/a8e6cf/ffffff?text=House+5+-+Garden",
+        "https://via.placeholder.com/800x600/dda0dd/ffffff?text=House+5+-+Wine+Cellar"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "flat",
+      "price": 320000,
+      "bedrooms": 2,
+      "dateAdded": "2024-12-15",
+      "postcode": "SE1",
+      "location": "Southwark, London",
+      "description": "Contemporary 2-bedroom flat in Southwark",
+      "longDescription": "Stylish apartment in a modern development with excellent amenities. Features include a bright open-plan living space, contemporary kitchen with integrated appliances, two double bedrooms with ample storage, and a sleek family bathroom. The development offers a 24-hour concierge, residents' gym, and is within walking distance of London Bridge and Borough Market.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+6",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=Flat+6+-+Building+View",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=Flat+6+-+Living+Space",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=Flat+6+-+Kitchen",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=Flat+6+-+Master+Bedroom",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=Flat+6+-+Second+Bedroom",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=Flat+6+-+Bathroom"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "house",
+      "price": 520000,
+      "bedrooms": 3,
+      "dateAdded": "2024-12-05",
+      "postcode": "N1",
+      "location": "Islington, London",
+      "description": "Charming 3-bedroom house in Islington",
+      "longDescription": "Delightful Victorian terraced house offering period charm with modern updates. Features include three well-proportioned bedrooms, a bright through-lounge, contemporary kitchen/breakfast room, and a family bathroom. The property retains many original features including fireplaces and high ceilings. Benefits from a lovely rear garden and is located on a quiet residential street close to excellent schools, shops, and transport.",
+      "floorPlan": "https://via.placeholder.com/800x600/e0e0e0/666666?text=Floor+Plan+7",
+      "images": [
+        "https://via.placeholder.com/800x600/4a90e2/ffffff?text=House+7+-+Front+Exterior",
+        "https://via.placeholder.com/800x600/7b68ee/ffffff?text=House+7+-+Living+Room",
+        "https://via.placeholder.com/800x600/50c878/ffffff?text=House+7+-+Kitchen+Diner",
+        "https://via.placeholder.com/800x600/ff6b6b/ffffff?text=House+7+-+Master+Bedroom",
+        "https://via.placeholder.com/800x600/ffd93d/ffffff?text=House+7+-+Bedroom+2",
+        "https://via.placeholder.com/800x600/95e1d3/ffffff?text=House+7+-+Bathroom",
+        "https://via.placeholder.com/800x600/a8e6cf/ffffff?text=House+7+-+Garden"
+      ]
+    }
+  ]
