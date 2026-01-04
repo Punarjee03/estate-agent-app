@@ -1,46 +1,125 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
+import DatePicker from 'react-datepicker';
+import ReactSlider from 'react-slider';
 import '../styles/SearchForm.css';
 
 function SearchForm({ onSearch }) {
   // State to hold all search criteria
   const [searchCriteria, setSearchCriteria] = useState({
     type: 'any',
-    minPrice: '',
-    maxPrice: '',
+    minPrice: 0,
+    maxPrice: 1000000,
     minBedrooms: '',
     maxBedrooms: '',
-    dateFrom: '',
-    dateTo: '',
+    dateFrom: null,
+    dateTo: null,
     postcode: ''
   });
 
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // Options for React-Select (Property Type)
+  const propertyTypeOptions = [
+    { value: 'any', label: 'Any Type' },
+    { value: 'house', label: 'House' },
+    { value: 'flat', label: 'Flat' }
+  ];
+
+  // Options for Bedrooms
+  const bedroomOptions = [
+    { value: '', label: 'Any' },
+    { value: '1', label: '1' },
+    { value: '2', label: '2' },
+    { value: '3', label: '3' },
+    { value: '4', label: '4' },
+    { value: '5', label: '5+' }
+  ];
+
+  // Handle property type change
+  const handleTypeChange = (selectedOption) => {
     setSearchCriteria(prev => ({
       ...prev,
-      [name]: value
+      type: selectedOption.value
+    }));
+  };
+
+  // Handle price slider change
+  const handlePriceChange = (values) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      minPrice: values[0],
+      maxPrice: values[1]
+    }));
+  };
+
+  // Handle min bedrooms change
+  const handleMinBedroomsChange = (selectedOption) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      minBedrooms: selectedOption.value
+    }));
+  };
+
+  // Handle max bedrooms change
+  const handleMaxBedroomsChange = (selectedOption) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      maxBedrooms: selectedOption.value
+    }));
+  };
+
+  // Handle date from change
+  const handleDateFromChange = (date) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      dateFrom: date
+    }));
+  };
+
+  // Handle date to change
+  const handleDateToChange = (date) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      dateTo: date
+    }));
+  };
+
+  // Handle postcode change
+  const handlePostcodeChange = (e) => {
+    setSearchCriteria(prev => ({
+      ...prev,
+      postcode: e.target.value
     }));
   };
 
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchCriteria);
+    
+    // Convert dates to string format for the search function
+    const criteria = {
+      ...searchCriteria,
+      dateFrom: searchCriteria.dateFrom ? searchCriteria.dateFrom.toISOString().split('T')[0] : '',
+      dateTo: searchCriteria.dateTo ? searchCriteria.dateTo.toISOString().split('T')[0] : ''
+    };
+    
+    onSearch(criteria);
   };
 
   // Handle reset
   const handleReset = () => {
-    setSearchCriteria({
+    const resetCriteria = {
       type: 'any',
-      minPrice: '',
-      maxPrice: '',
+      minPrice: 0,
+      maxPrice: 1000000,
       minBedrooms: '',
       maxBedrooms: '',
-      dateFrom: '',
-      dateTo: '',
+      dateFrom: null,
+      dateTo: null,
       postcode: ''
-    });
+    };
+    setSearchCriteria(resetCriteria);
+    
+    // Also reset the search results
     onSearch({
       type: 'any',
       minPrice: '',
@@ -58,107 +137,109 @@ function SearchForm({ onSearch }) {
       <h2>Search Properties</h2>
       <form onSubmit={handleSubmit} className="search-form">
         
-        {/* Property Type */}
+        {/* Property Type - React Select */}
         <div className="form-group">
           <label htmlFor="type">Property Type:</label>
-          <select 
+          <Select
             id="type"
-            name="type" 
-            value={searchCriteria.type} 
-            onChange={handleChange}
-          >
-            <option value="any">Any</option>
-            <option value="house">House</option>
-            <option value="flat">Flat</option>
-          </select>
+            options={propertyTypeOptions}
+            value={propertyTypeOptions.find(opt => opt.value === searchCriteria.type)}
+            onChange={handleTypeChange}
+            className="react-select-container"
+            classNamePrefix="react-select"
+            placeholder="Select property type..."
+          />
         </div>
 
-        {/* Price Range */}
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="minPrice">Min Price (£):</label>
-            <input
-              id="minPrice"
-              type="number"
-              name="minPrice"
-              value={searchCriteria.minPrice}
-              onChange={handleChange}
-              placeholder="e.g. 200000"
-              min="0"
+        {/* Price Range - React Slider */}
+        <div className="form-group">
+          <label>Price Range: £{searchCriteria.minPrice.toLocaleString()} - £{searchCriteria.maxPrice.toLocaleString()}</label>
+          <div className="slider-container">
+            <ReactSlider
+              className="price-slider"
+              thumbClassName="slider-thumb"
+              trackClassName="slider-track"
+              min={0}
+              max={1000000}
+              step={10000}
+              value={[searchCriteria.minPrice, searchCriteria.maxPrice]}
+              onChange={handlePriceChange}
+              pearling
+              minDistance={50000}
             />
           </div>
-
-          <div className="form-group">
-            <label htmlFor="maxPrice">Max Price (£):</label>
-            <input
-              id="maxPrice"
-              type="number"
-              name="maxPrice"
-              value={searchCriteria.maxPrice}
-              onChange={handleChange}
-              placeholder="e.g. 500000"
-              min="0"
-            />
+          <div className="slider-labels">
+            <span>£0</span>
+            <span>£1,000,000</span>
           </div>
         </div>
 
-        {/* Bedroom Range */}
+        {/* Bedroom Range - React Select */}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="minBedrooms">Min Bedrooms:</label>
-            <input
+            <Select
               id="minBedrooms"
-              type="number"
-              name="minBedrooms"
-              value={searchCriteria.minBedrooms}
-              onChange={handleChange}
-              placeholder="e.g. 1"
-              min="0"
-              max="10"
+              options={bedroomOptions}
+              value={bedroomOptions.find(opt => opt.value === searchCriteria.minBedrooms)}
+              onChange={handleMinBedroomsChange}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              placeholder="Any"
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="maxBedrooms">Max Bedrooms:</label>
-            <input
+            <Select
               id="maxBedrooms"
-              type="number"
-              name="maxBedrooms"
-              value={searchCriteria.maxBedrooms}
-              onChange={handleChange}
-              placeholder="e.g. 3"
-              min="0"
-              max="10"
+              options={bedroomOptions}
+              value={bedroomOptions.find(opt => opt.value === searchCriteria.maxBedrooms)}
+              onChange={handleMaxBedroomsChange}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              placeholder="Any"
             />
           </div>
         </div>
 
-        {/* Date Range */}
+        {/* Date Range - React Datepicker */}
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="dateFrom">Date Added From:</label>
-            <input
+            <DatePicker
               id="dateFrom"
-              type="date"
-              name="dateFrom"
-              value={searchCriteria.dateFrom}
-              onChange={handleChange}
+              selected={searchCriteria.dateFrom}
+              onChange={handleDateFromChange}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Select start date"
+              className="date-picker-input"
+              isClearable
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="dateTo">Date Added To:</label>
-            <input
+            <DatePicker
               id="dateTo"
-              type="date"
-              name="dateTo"
-              value={searchCriteria.dateTo}
-              onChange={handleChange}
+              selected={searchCriteria.dateTo}
+              onChange={handleDateToChange}
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Select end date"
+              className="date-picker-input"
+              isClearable
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+              minDate={searchCriteria.dateFrom}
             />
           </div>
         </div>
 
-        {/* Postcode */}
+        {/* Postcode - Standard Input */}
         <div className="form-group">
           <label htmlFor="postcode">Postcode Area:</label>
           <input
@@ -166,15 +247,16 @@ function SearchForm({ onSearch }) {
             type="text"
             name="postcode"
             value={searchCriteria.postcode}
-            onChange={handleChange}
-            placeholder="e.g. BR1, NW1"
+            onChange={handlePostcodeChange}
+            placeholder="e.g. BR1, NW1, SW1"
+            className="postcode-input"
           />
         </div>
 
         {/* Buttons */}
         <div className="form-actions">
-          <button type="submit" className="btn-search">Search Properties</button>
-          <button type="button" className="btn-reset" onClick={handleReset}>Reset</button>
+          <button type="submit" className="btn-search">🔍 Search Properties</button>
+          <button type="button" className="btn-reset" onClick={handleReset}>🔄 Reset</button>
         </div>
       </form>
     </div>
