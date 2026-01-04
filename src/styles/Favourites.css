@@ -161,23 +161,102 @@
     bottom: 0;
   }
   
-  /* Responsive Design */
+  /* Responsive Design - iPad and smaller */
   @media (max-width: 1024px) {
     .favourites-sidebar {
       width: 300px;
     }
+    
+    .favourite-image {
+      width: 70px;
+      height: 70px;
+    }
   }
   
+  /* Responsive Design - Mobile devices */
   @media (max-width: 768px) {
     .favourites-sidebar {
       width: 100%;
       height: auto;
-      position: relative;
+      max-height: 250px;
+      position: fixed;
+      bottom: 0;
+      top: auto;
+      left: 0;
+      right: 0;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 20px 20px 0 0;
     }
   
     .favourites-sidebar.drag-over {
       border-left: none;
       border-top: 4px solid #3498db;
+    }
+    
+    .favourites-header {
+      padding: 12px 15px;
+      border-radius: 20px 20px 0 0;
+    }
+    
+    .favourites-header h3 {
+      font-size: 16px;
+    }
+    
+    .btn-clear-all {
+      padding: 6px 12px;
+      font-size: 11px;
+    }
+    
+    .favourites-list {
+      padding: 10px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+    
+    .favourite-item {
+      margin-bottom: 10px;
+    }
+    
+    .favourite-link {
+      padding: 8px;
+    }
+    
+    .favourite-image {
+      width: 60px;
+      height: 60px;
+      margin-right: 10px;
+    }
+    
+    .favourite-info h4 {
+      font-size: 12px;
+    }
+    
+    .favourite-price {
+      font-size: 14px;
+    }
+    
+    .favourite-location {
+      font-size: 11px;
+    }
+    
+    .btn-remove {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      top: 8px;
+      right: 8px;
+    }
+    
+    .favourites-count {
+      padding: 10px 15px;
+      font-size: 12px;
+    }
+    
+    .favourites-empty {
+      padding: 30px 15px;
+    }
+    
+    .favourites-empty p {
+      font-size: 14px;
     }
   }

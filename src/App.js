@@ -18,6 +18,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import './App.css';
+import './styles/Aesthetics.css';
 import SearchForm from './components/SearchForm';
 import PropertyDetails from './components/PropertyDetails';
 import DraggablePropertyCard from './components/DraggablePropertyCard';
@@ -217,11 +218,14 @@ function App() {
     </>
   );
 
+  // Set basename for GitHub Pages deployment, empty for localhost
+  const basename = process.env.NODE_ENV === 'production' ? '/estate-agent-app' : '';
+
   return (
     // Wrap entire app with DnD provider for drag and drop functionality
     <DndProvider backend={HTML5Backend}>
-      {/* Router for navigation between pages - basename added for GitHub Pages */}
-      <Router basename="/estate-agent-app">
+      {/* Router for navigation between pages - basename changes based on environment */}
+      <Router basename={basename}>
         <div className="App">
           <Routes>
             {/* Home page route */}
