@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import './App.css';
 import SearchForm from './components/SearchForm';
 import PropertyDetails from './components/PropertyDetails';
+import DraggablePropertyCard from './components/DraggablePropertyCard';
+import Favourites from './components/Favourites';
 import propertiesData from './data/properties.json';
 
 function App() {
@@ -12,6 +16,9 @@ function App() {
   // State to hold search results
   const [searchResults, setSearchResults] = useState(allProperties);
   const [hasSearched, setHasSearched] = useState(false);
+  
+  // State to hold favourites
+  const [favourites, setFavourites] = useState([]);
 
   // Helper function to convert date object to comparable format
   const convertDateToComparable = (added) => {
@@ -83,6 +90,32 @@ function App() {
     setHasSearched(true);
   };
 
+  // Add to favourites function
+  const handleAddToFavourites = (property) => {
+    // Check if property is already in favourites
+    const isAlreadyFavourite = favourites.some(fav => fav.id === property.id);
+    
+    if (isAlreadyFavourite) {
+      alert('This property is already in your favourites!');
+      return;
+    }
+    
+    // Add to favourites
+    setFavourites(prev => [...prev, property]);
+  };
+
+  // Remove from favourites function
+  const handleRemoveFromFavourites = (propertyId) => {
+    setFavourites(prev => prev.filter(fav => fav.id !== propertyId));
+  };
+
+  // Clear all favourites
+  const handleClearAllFavourites = () => {
+    if (window.confirm('Are you sure you want to clear all favourites?')) {
+      setFavourites([]);
+    }
+  };
+
   // Home/Search Page Component
   const HomePage = () => (
     <>
@@ -106,21 +139,12 @@ function App() {
           {searchResults.length > 0 ? (
             <div className="properties-grid">
               {searchResults.map(property => (
-                <div key={property.id} className="property-card">
-                  <img src={property.picture} alt={property.description} />
-                  <div className="property-info">
-                    <h3>{property.description}</h3>
-                    <p className="property-price">£{property.price.toLocaleString()}</p>
-                    <p className="property-details">
-                      <span>{property.bedrooms} bedrooms</span> | 
-                      <span> {property.type}</span>
-                    </p>
-                    <p className="property-location">{property.location}</p>
-                    <Link to={`/property/${property.id}`}>
-                      <button className="btn-view-details">View Details</button>
-                    </Link>
-                  </div>
-                </div>
+                <DraggablePropertyCard
+                  key={property.id}
+                  property={property}
+                  onAddToFavourites={handleAddToFavourites}
+                  isFavourite={favourites.some(fav => fav.id === property.id)}
+                />
               ))}
             </div>
           ) : (
@@ -134,18 +158,27 @@ function App() {
       <footer className="App-footer">
         <p>&copy; 2024 Estate Agent App | Westminster University Project</p>
       </footer>
+
+      {/* Favourites Sidebar */}
+      <Favourites 
+        favourites={favourites}
+        onRemove={handleRemoveFromFavourites}
+        onClearAll={handleClearAllFavourites}
+      />
     </>
   );
 
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/property/:id" element={<PropertyDetails />} />
-        </Routes>
-      </div>
-    </Router>
+    <DndProvider backend={HTML5Backend}>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/property/:id" element={<PropertyDetails />} />
+          </Routes>
+        </div>
+      </Router>
+    </DndProvider>
   );
 }
 
