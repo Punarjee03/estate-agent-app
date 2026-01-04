@@ -220,8 +220,8 @@ function App() {
   return (
     // Wrap entire app with DnD provider for drag and drop functionality
     <DndProvider backend={HTML5Backend}>
-      {/* Router for navigation between pages */}
-      <Router>
+      {/* Router for navigation between pages - basename added for GitHub Pages */}
+      <Router basename="/estate-agent-app">
         <div className="App">
           <Routes>
             {/* Home page route */}
