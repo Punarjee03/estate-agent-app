@@ -1,0 +1,335 @@
+.property-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: white;
+    min-height: 100vh;
+  }
+  
+  .btn-back {
+    background: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background 0.3s;
+  }
+  
+  .btn-back:hover {
+    background: #2980b9;
+  }
+  
+  .property-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+  }
+  
+  .property-header h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+  
+  .property-price {
+    color: #e74c3c;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 15px 0;
+  }
+  
+  .property-meta {
+    color: #7f8c8d;
+    font-size: 18px;
+  }
+  
+  .property-meta span {
+    margin: 0 10px;
+  }
+  
+  /* Image Gallery Styles */
+  .image-gallery {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  .main-image {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .thumbnail-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .thumbnail-gallery img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  
+  .thumbnail-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .thumbnail-gallery img.active {
+    border-color: #3498db;
+    transform: scale(1.05);
+  }
+  
+  .gallery-arrow {
+    position: absolute;
+    top: 250px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 10;
+  }
+  
+  .gallery-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .arrow-left {
+    left: 20px;
+  }
+  
+  .arrow-right {
+    right: 20px;
+  }
+  
+  /* Tabs Styles */
+  .property-tabs {
+    margin: 40px 0;
+  }
+  
+  .react-tabs__tab-list {
+    border-bottom: 2px solid #ecf0f1;
+    margin: 0 0 30px;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .react-tabs__tab {
+    background: #ecf0f1;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #7f8c8d;
+    transition: all 0.3s;
+  }
+  
+  .react-tabs__tab:hover {
+    background: #d5dbdb;
+  }
+  
+  .react-tabs__tab--selected {
+    background: #3498db;
+    color: white;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    animation: fadeIn 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .tab-content h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .tab-content p {
+    color: #34495e;
+    line-height: 1.8;
+    font-size: 16px;
+  }
+  
+  .property-features {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .property-features h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+  }
+  
+  .property-features ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .property-features li {
+    padding: 10px 0;
+    color: #34495e;
+    border-bottom: 1px solid #ecf0f1;
+  }
+  
+  .property-features li:last-child {
+    border-bottom: none;
+  }
+  
+  .property-features li:before {
+    content: "✓ ";
+    color: #27ae60;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .floor-plan-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .floor-plan-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Action Buttons */
+  .property-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid #ecf0f1;
+  }
+  
+  .btn-favourite,
+  .btn-contact {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .btn-favourite {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .btn-favourite:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+  }
+  
+  .btn-contact {
+    background: #27ae60;
+    color: white;
+  }
+  
+  .btn-contact:hover {
+    background: #229954;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.3);
+  }
+  
+  .property-not-found {
+    text-align: center;
+    padding: 100px 20px;
+  }
+  
+  .property-not-found h2 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .property-header h1 {
+      font-size: 24px;
+    }
+  
+    .property-price {
+      font-size: 28px;
+    }
+  
+    .main-image {
+      height: 300px;
+    }
+  
+    .gallery-arrow {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      top: 150px;
+    }
+  
+    .thumbnail-gallery {
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 10px;
+    }
+  
+    .thumbnail-gallery img {
+      height: 80px;
+    }
+  
+    .property-actions {
+      flex-direction: column;
+    }
+  
+    .btn-favourite,
+    .btn-contact {
+      width: 100%;
+    }
+  }

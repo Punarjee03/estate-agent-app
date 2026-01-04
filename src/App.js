@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import SearchForm from './components/SearchForm';
+import PropertyDetails from './components/PropertyDetails';
 import propertiesData from './data/properties.json';
 
 function App() {
+  // Extract properties array from the JSON structure
+  const allProperties = propertiesData.properties;
+  
   // State to hold search results
-  const [searchResults, setSearchResults] = useState(propertiesData);
+  const [searchResults, setSearchResults] = useState(allProperties);
   const [hasSearched, setHasSearched] = useState(false);
+
+  // Helper function to convert date object to comparable format
+  const convertDateToComparable = (added) => {
+    const monthMap = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3,
+      'May': 4, 'June': 5, 'July': 6, 'August': 7,
+      'September': 8, 'October': 9, 'November': 10, 'December': 11
+    };
+    return new Date(added.year, monthMap[added.month], added.day);
+  };
 
   // Search function - filters properties based on criteria
   const handleSearch = (criteria) => {
-    let results = [...propertiesData];
+    let results = [...allProperties];
 
-    // Filter by type
+    // Filter by type (case-insensitive)
     if (criteria.type !== 'any') {
-      results = results.filter(property => property.type === criteria.type);
+      results = results.filter(property => 
+        property.type.toLowerCase() === criteria.type.toLowerCase()
+      );
     }
 
     // Filter by minimum price
@@ -39,12 +56,20 @@ function App() {
 
     // Filter by date from
     if (criteria.dateFrom) {
-      results = results.filter(property => new Date(property.dateAdded) >= new Date(criteria.dateFrom));
+      const searchDateFrom = new Date(criteria.dateFrom);
+      results = results.filter(property => {
+        const propertyDate = convertDateToComparable(property.added);
+        return propertyDate >= searchDateFrom;
+      });
     }
 
     // Filter by date to
     if (criteria.dateTo) {
-      results = results.filter(property => new Date(property.dateAdded) <= new Date(criteria.dateTo));
+      const searchDateTo = new Date(criteria.dateTo);
+      results = results.filter(property => {
+        const propertyDate = convertDateToComparable(property.added);
+        return propertyDate <= searchDateTo;
+      });
     }
 
     // Filter by postcode
@@ -58,8 +83,9 @@ function App() {
     setHasSearched(true);
   };
 
-  return (
-    <div className="App">
+  // Home/Search Page Component
+  const HomePage = () => (
+    <>
       <header className="App-header">
         <h1>Estate Agent Property Search</h1>
         <p>Find your dream property in London</p>
@@ -81,7 +107,7 @@ function App() {
             <div className="properties-grid">
               {searchResults.map(property => (
                 <div key={property.id} className="property-card">
-                  <img src={property.images[0]} alt={property.description} />
+                  <img src={property.picture} alt={property.description} />
                   <div className="property-info">
                     <h3>{property.description}</h3>
                     <p className="property-price">£{property.price.toLocaleString()}</p>
@@ -90,7 +116,9 @@ function App() {
                       <span> {property.type}</span>
                     </p>
                     <p className="property-location">{property.location}</p>
-                    <button className="btn-view-details">View Details</button>
+                    <Link to={`/property/${property.id}`}>
+                      <button className="btn-view-details">View Details</button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -106,7 +134,18 @@ function App() {
       <footer className="App-footer">
         <p>&copy; 2024 Estate Agent App | Westminster University Project</p>
       </footer>
-    </div>
+    </>
+  );
+
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/property/:id" element={<PropertyDetails />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
