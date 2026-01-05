@@ -9,7 +9,7 @@
  * - Drag and drop functionality
  * 
  * @author Nirmanee Munasinghe
- * @university University of Westminster
+ * @id w2120300 20231347
  * @course 5COSC026W Advanced Client-Side Web Development
  */
 
