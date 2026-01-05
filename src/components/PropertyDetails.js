@@ -137,16 +137,46 @@ function PropertyDetails() {
         <TabPanel>
           <div className="tab-content">
             <h3>Location</h3>
-            <div className="map-container">
-              <iframe
-                title="Property Location Map"
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
-                width="100%"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-              />
+            <p className="location-info" style={{ fontSize: '16px', marginBottom: '20px', color: '#34495e' }}>
+              📍 {property.location}
+            </p>
+            <div className="map-placeholder" style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              height: '450px',
+              borderRadius: '12px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              color: 'white',
+              textAlign: 'center',
+              padding: '40px'
+            }}>
+              <div style={{ fontSize: '64px', marginBottom: '20px' }}>📍</div>
+              <h4 style={{ marginBottom: '15px', fontSize: '24px' }}>{property.location}</h4>
+              <p style={{ marginBottom: '25px', fontSize: '16px', opacity: 0.9 }}>
+                Postcode: {property.postcode}
+              </p>
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(property.location)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: 'white',
+                  color: '#667eea',
+                  padding: '12px 30px',
+                  borderRadius: '8px',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  fontSize: '16px',
+                  display: 'inline-block',
+                  transition: 'transform 0.3s'
+                }}
+                onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
+                onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+              >
+                🗺️ View on Google Maps
+              </a>
             </div>
           </div>
         </TabPanel>
